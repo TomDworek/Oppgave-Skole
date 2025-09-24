@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: #66cccc;">
+    <button id="openBtn">Åpne Inventory</button>
+    <button id="closeBtn">Lukk Inventory</button>
+    <div class="inventory hidden" id="inventory">
+        <div class="slot" onclick="MoveItem(this)"></div>
+        <div class="slot" onclick="MoveItem(this)"></div>
+        <div class="slot" onclick="MoveItem(this)"></div>
+        <div class="slot" onclick="MoveItem(this)"></div>
+        <div class="slot" onclick="MoveItem(this)"></div>
+        <div class="slot" onclick="MoveItem(this)"></div>
+        <div class="slot" onclick="MoveItem(this)"></div>
+        <div class="slot" onclick="MoveItem(this)"></div>
+        <div class="slot" onclick="MoveItem(this)"></div>
+        <div class="slot" onclick="MoveItem(this)"></div>
+        <div class="slot" onclick="MoveItem(this)"></div>
+        <div class="slot" onclick="MoveItem(this)"></div>
+    </div>
+    <div class="items">
+        <div class="slot" onclick="MoveItem(this)"><img src="https://i.pinimg.com/474x/33/e8/e4/33e8e42ee9e634d3f19d15e6dc6abcc9.jpg" alt=""></div>
+        <div class="slot" onclick="MoveItem(this)"><img src="https://cdn3.emoji.gg/emojis/8426-cat.png" alt=""></div>
+        <div class="slot" onclick="MoveItem(this)"><img src="https://img.favpng.com/3/13/0/computer-mouse-black-rat-murids-png-favpng-bNQ4wG6syR0ex93E1fgMCkTpq.jpg" alt=""></div>
+        <div class="slot" onclick="MoveItem(this)"><img src="https://www.clipartmax.com/png/small/247-2479978_dead-cartoon-fish-goldfish-clip-art.png" alt=""></div>
+    </div>
+    <div class="items">
+        <div class="slot" onclick="MoveItem(this)"><img src="https://i.pinimg.com/1200x/3c/e0/d3/3ce0d3ef99d7d6451162a1b45fc671f7.jpg" alt=""></div>
+        <div class="slot" onclick="MoveItem(this)"><img src="https://icon2.cleanpng.com/lnd/20240617/aou/az3b04mmz.webp" alt=""></div>
+        <div class="slot" onclick="MoveItem(this)"><img src="https://icon2.cleanpng.com/lnd/20240927/te/5622160a03c7ebe508d9fb7e784d35.png" alt=""></div>
+        <div class="slot" onclick="MoveItem(this)"><img src="https://intromusic.no/wp-content/uploads/2012/06/Bilde-24.png" alt=""></div>
+    </div>
+
+<script>
+    const inventory = document.querySelector("#inventory");
+    const openBtn = document.querySelector("#openBtn");
+    const closeBtn = document.querySelector("#closeBtn");
+    
+
+    openBtn.addEventListener("click", () => {
+        inventory.classList.remove("hidden");
+    });
+    closeBtn.addEventListener("click", () => {
+        inventory.classList.add("hidden");
+    });
+
+    let selected = null;
+    
+    function MoveItem(slot) {
+      if (selected === null && slot.innerHTML !== "") {
+        // Velger item
+        selected = slot;
+        slot.style.border = "2px solid red";
+      } else if (selected !== null && slot === selected) {
+        // Klikk samme igjen = avbryt
+        selected.style.border = "1px solid #aaa";
+        selected = null;
+      } else if (selected !== null && slot !== selected && slot.innerHTML === "") {
+        // Flytt item
+        slot.innerHTML = selected.innerHTML;
+        selected.innerHTML = "";
+        selected.style.border = "1px solid #aaa";
+        selected = null;
+      }
+    }
+</script>
+</body>
+</html>

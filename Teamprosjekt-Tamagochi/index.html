@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tamagochi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    .top-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .box{
+      width: 100px;
+      height: 80px;
+      border: 2px solid black;
+      margin: 5px;
+      display: flex;
+      justify-content: center;
+      font-weight: bold;
+    }
+    .timer {
+      margin-left: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .tamagochi {
+      margin-top: 40px;
+      font-size: 100px;
+    }
+    .buttons {
+      margin-top: 20px;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  
+  </style>
+</head>
+<body>
+  <div class="top-container">
+    <div class="box" id="hunger">Mat</div>
+    <div class="box" id="happiness">Humør</div>
+    <div class="box" id="cleanliness">Renslighet</div>
+    <div class="timer" id="timer">300</div>
+  </div>
+  <div class="tamagochi" id="pet">🦖</div>
+  <div class="buttons">
+    <button onclick="feed()">Mate</button>
+    <button onclick="play()">Leke</button>
+    <button onclick="clean()">Vaske</button>
+  </div>
+  <script>
+    let hunger = 5;
+    let happiness = 5;
+    let cleanliness = 5;
+    let timeleft = 300;
+    let alive = true;
+
+    function updateUI() {
+      document.getElementById(hunger).innerText = "Mat: " + hunger;
+      document.getElementById(happiness).innerText = "Humør: " + happiness;
+      document.getElementById(cleanliness).innerText = "Renslighet: " + cleanliness;
+      document.getElementById(timer).innerText = timeleft;
+    }
+    function feed() {
+      hunger++;
+      updateUI();
+    }
+    function play() {
+      happiness++;
+      cleanliness--;
+      updateUI;
+    }
+    function clean() {
+      cleanliness++;
+      updateUI;
+    }
+    function countdown() {
+      if (timeLeft > 0) {
+        timeLeft--;
+        updateUI();
+      } else {
+        document.getElementById("pet").innerText = "💀";
+        clearInterval(timerInterval);
+        clearInterval(decayInterval);
+      }
+    }
+    function decayStats() {
+      if (hunger > 0) hunger--;
+      if (happiness > 0) happiness--;
+      if (cleanliness > 0) cleanliness--;
+      updateUI();
+    }
+
+    updateUI();
+    let timerInterval = setInterval(countdown, 1000);
+    let decayInterval = setInterval(decayStats, 5000);
+  </script>
+</body>
+</html> 

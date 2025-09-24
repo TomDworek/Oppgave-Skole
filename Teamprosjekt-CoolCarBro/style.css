@@ -1,0 +1,60 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #222;
+  color: #eee;
+  text-align: center;
+}
+
+/* STYLE: Enkel styling for spillet */
+
+/* Selve app-containeren */
+#app {
+  font-family: Arial, sans-serif;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 2px solid #333;
+  border-radius: 8px;
+  background-color: #101010;
+  text-align: center;
+}
+
+/* Teksten som viser kulhetsnivået */
+#coolness-label {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* Meldingsfeltet */
+#message-container {
+  margin: 20px 0;
+  font-size: 1.1em;
+  min-height: 40px; /* holder plass til teksten */
+}
+
+/* Knappecontainer */
+#choices {
+  margin-top: 20px;
+}
+
+/* Knapper */
+#choices button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #333;
+  background-color: #ddd;
+}
+
+#choices button:hover {
+  background-color: #bbb;
+}
+
+/* Når knapper blir deaktivert */
+#choices button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
